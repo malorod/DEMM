@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DEMM</string>
+    <string name="b_text_search">Buscar</string>
+    <string name="b_text_add">Añadir</string>
+    <string name="query_search">¿Qué quieres buscar?</string>
+    <string name="edit_txt_search">Nombre del objeto</string>
+    <string name="thing_name">Nombre</string>
+    <string name="thing_placement">Lugar</string>
+    <string name="add_thing">Añadir</string>
+</resources>
