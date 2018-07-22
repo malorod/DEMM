@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(starAddThings)
         }
 
-        findViewById(R.id.search).setOnClickListener {
+        search.setOnClickListener {
 
             val startSearchThings = Intent(this, SearchThings::class.java)
             startActivity(startSearchThings)
