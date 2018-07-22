@@ -3,7 +3,7 @@ package com.demm.marina.demm
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-class AddObject : AppCompatActivity() {
+class AddThings : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

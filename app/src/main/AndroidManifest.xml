@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchThings" />
-        <activity android:name=".AddObject"></activity>
+        <activity android:name=".AddThings"></activity>
     </application>
 
 </manifest>
