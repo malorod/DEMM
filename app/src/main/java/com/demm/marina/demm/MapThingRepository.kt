@@ -5,7 +5,12 @@ class MapThingRepository : ThingRepository {
     var map = mutableMapOf<String, MutableList<Thing>>()
 
     override fun save(thing: Thing) {
-        map.put(thing.placement, mutableListOf<Thing>(thing))
+        if (map.containsKey(thing.placement)) {
+            val thingsList = map.get(thing.placement)
+            thingsList!!.add(thing)
+        } else {
+            map.put(thing.placement, mutableListOf<Thing>(thing))
+        }
     }
 
     override fun isEmpty(): Boolean {
