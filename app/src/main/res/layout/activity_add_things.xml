@@ -17,23 +17,21 @@
         android:layout_marginTop="16dp"
         android:text="@string/thing_name"
         android:textSize="24sp"
-        android:labelFor="@+id/editText2"
+        android:labelFor="@+id/thingName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/thingName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,17 +46,17 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:labelFor="@+id/editText3"
+        android:labelFor="@+id/thingPlacement"
 
         android:text="@string/thing_placement"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.188"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/thingName" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/thingPlacement"
         android:layout_width="253dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -74,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addThing"
         android:layout_width="144dp"
         android:layout_height="81dp"
         android:layout_marginBottom="8dp"
@@ -87,6 +85,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/thingPlacement"
         app:layout_constraintVertical_bias="0.653" />
 </android.support.constraint.ConstraintLayout>
