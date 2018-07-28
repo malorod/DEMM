@@ -5,10 +5,10 @@ import org.junit.Test
 
 class MapThingRepositoryTest {
 
-    val repository = MapThingRepository()
+    val repository: ThingRepository = MapThingRepository()
 
     @Test
     fun givenNewRepositoryShouldBeEmpty() {
-        assertEquals(repository.map.size.toLong(), 0)
+        assertTrue(repository.isEmpty())
     }
 }
