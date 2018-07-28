@@ -14,13 +14,13 @@ class AddThings : AppCompatActivity() {
 
         addThing.setOnClickListener {
 
-            if (thingName.text != null && thingPlacement.text != null){
+            if (thingName.text != null && thingPlacement.text != null) {
                 val name = thingName.text.toString()
                 val placement = thingPlacement.text.toString()
                 val thing = Thing(name, placement)
 
-                val thingRepository: ThingRepository? = null
-                thingRepository?.save(thing)
+                val thingRepository: ThingRepository = (application as DEMMApplication).repository
+                thingRepository.save(thing)
             }
         }
     }
