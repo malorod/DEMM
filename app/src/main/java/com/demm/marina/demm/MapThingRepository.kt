@@ -21,4 +21,8 @@ class MapThingRepository : ThingRepository {
         return map.get(thing.placement)?.contains(thing)
     }
 
+    override fun delete(thing: Thing) {
+        (map.get(thing.placement))?.remove(thing)
+    }
+
 }

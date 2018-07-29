@@ -16,7 +16,7 @@ class MapThingRepositoryTest {
     @Test
     fun shouldSaveAThing() {
         //Given
-        val thing = Thing("Boli","Cajón")
+        val thing = Thing("Boli", "Cajón")
         //When
         repository.save(thing)
         //Then
@@ -34,8 +34,22 @@ class MapThingRepositoryTest {
         repository.save(socks)
         repository.save(scarf)
 
-        //then
+        //Then
         assertThat(repository.contains(socks)!!, Is.`is`(true))
         assertTrue(repository.contains(scarf)!!)
+    }
+
+    @Test
+    fun shouldDeleteAThing() {
+        //Given
+        val cajon = "cajon"
+        val socks = Thing("Socks", cajon)
+
+        //When
+        repository.save(socks)
+        repository.delete(socks)
+
+        //Then
+        assertFalse(repository.contains(socks)!!)
     }
 }

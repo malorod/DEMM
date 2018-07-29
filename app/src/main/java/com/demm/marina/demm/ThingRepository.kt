@@ -4,4 +4,5 @@ interface ThingRepository {
     fun save(thing: Thing)
     fun isEmpty(): Boolean
     fun contains(thing: Thing): Boolean?
+    fun delete(thing: Thing)
 }
