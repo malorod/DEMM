@@ -52,4 +52,20 @@ class MapThingRepositoryTest {
         //Then
         assertFalse(repository.contains(socks)!!)
     }
+
+    @Test
+    fun shouldModifyAThing() {
+        //Given
+        val cajon = "cajon"
+        val socs = Thing("Socs", cajon)
+        val socks = Thing("Socks", cajon)
+
+        //When
+        repository.save(socs)
+        repository.edit(socs, socks)
+
+        //Then
+        assertFalse(repository.contains(socs)!!)
+        assertTrue(repository.contains(socks)!!)
+    }
 }

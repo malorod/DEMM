@@ -1,5 +1,7 @@
 package com.demm.marina.demm
 
+import android.text.TextUtils.indexOf
+
 class MapThingRepository : ThingRepository {
 
     var map = mutableMapOf<String, MutableList<Thing>>()
@@ -22,7 +24,11 @@ class MapThingRepository : ThingRepository {
     }
 
     override fun delete(thing: Thing) {
-        (map.get(thing.placement))?.remove(thing)
+        (map.get(thing.placement))!!.remove(thing)
     }
 
+    override fun edit(thing: Thing, newThing: Thing) {
+        val thingsList = map.get(thing.placement)
+        thingsList!!.set(thingsList.indexOf(thing), newThing)
+    }
 }
