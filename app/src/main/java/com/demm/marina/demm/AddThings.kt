@@ -1,5 +1,6 @@
 package com.demm.marina.demm
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
@@ -22,6 +23,9 @@ class AddThings : AppCompatActivity() {
                 val thingRepository: ThingRepository = (application as DEMMApplication).repository
                 thingRepository.save(thing)
             }
+
+            val starListThings = Intent(this, ListThings::class.java)
+            startActivity(starListThings)
         }
     }
 }
