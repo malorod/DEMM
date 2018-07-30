@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchThings" />
-        <activity android:name=".AddThings"></activity>
+        <activity android:name=".AddThings" />
+        <activity android:name=".ListThings" />
     </application>
 
 </manifest>
