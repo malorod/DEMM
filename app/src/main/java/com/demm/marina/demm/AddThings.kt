@@ -24,8 +24,8 @@ class AddThings : AppCompatActivity() {
                 thingRepository.save(thing)
             }
 
-            val starListThings = Intent(this, ListThings::class.java)
-            startActivity(starListThings)
+            val startListThings = Intent(this, ListThings::class.java)
+            startActivity(startListThings)
         }
     }
 }
