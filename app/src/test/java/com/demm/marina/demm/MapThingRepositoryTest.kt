@@ -38,4 +38,17 @@ class MapThingRepositoryTest {
         assertThat(repository.contains(socks)!!, Is.`is`(true))
         assertTrue(repository.contains(scarf)!!)
     }
+
+    @Test
+    fun shoulReturnTheFirstThing(){
+        //Given
+        val expected = Thing("Calcetines", "Estanteria")
+        repository.save(expected)
+
+        //When
+        val first = repository.getFirst()
+
+        //Then
+        assertThat(first, Is.`is`(expected))
+    }
 }

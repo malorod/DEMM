@@ -18,5 +18,7 @@ class ListThings : AppCompatActivity() {
 
         val thingRepository: ThingRepository = (application as DEMMApplication).repository
 
+        thingPlacement.text = thingRepository.getFirst()?.placement
+
     }
 }

@@ -1,7 +1,6 @@
 package com.demm.marina.demm
 
 class MapThingRepository : ThingRepository {
-
     var map = mutableMapOf<String, MutableList<Thing>>()
 
     override fun save(thing: Thing) {
@@ -19,6 +18,11 @@ class MapThingRepository : ThingRepository {
 
     override fun contains(thing: Thing): Boolean? {
         return map.get(thing.placement)?.contains(thing)
+    }
+
+    override fun getFirst(): Thing? {
+        val firstKey = map.keys.first()
+        return map.get(firstKey)?.get(0)
     }
 
 }
