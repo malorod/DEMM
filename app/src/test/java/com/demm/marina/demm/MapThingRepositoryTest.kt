@@ -38,34 +38,4 @@ class MapThingRepositoryTest {
         assertThat(repository.contains(socks)!!, Is.`is`(true))
         assertTrue(repository.contains(scarf)!!)
     }
-
-    @Test
-    fun shouldDeleteAThing() {
-        //Given
-        val cajon = "cajon"
-        val socks = Thing("Socks", cajon)
-
-        //When
-        repository.save(socks)
-        repository.delete(socks)
-
-        //Then
-        assertFalse(repository.contains(socks)!!)
-    }
-
-    @Test
-    fun shouldModifyAThing() {
-        //Given
-        val cajon = "cajon"
-        val socs = Thing("Socs", cajon)
-        val socks = Thing("Socks", cajon)
-
-        //When
-        repository.save(socs)
-        repository.edit(socs, socks)
-
-        //Then
-        assertFalse(repository.contains(socs)!!)
-        assertTrue(repository.contains(socks)!!)
-    }
 }

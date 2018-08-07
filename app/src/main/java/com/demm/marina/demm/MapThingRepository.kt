@@ -21,16 +21,4 @@ class MapThingRepository : ThingRepository {
         return map.get(thing.placement)?.contains(thing)
     }
 
-    override fun delete(thing: Thing) {
-        (map.get(thing.placement))!!.remove(thing)
-    }
-
-    override fun edit(thing: Thing, newThing: Thing) {
-        val thingsList = map.get(thing.placement)
-        thingsList!!.set(thingsList.indexOf(thing), newThing)
-    }
-
-    override fun getByPlacement(placement: String): MutableList<Thing>? {
-        return map[placement]
-    }
 }
