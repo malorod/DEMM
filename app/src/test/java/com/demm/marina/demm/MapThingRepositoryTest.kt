@@ -40,7 +40,7 @@ class MapThingRepositoryTest {
     }
 
     @Test
-    fun shoulReturnTheFirstThing(){
+    fun shoulReturnTheFirstKey(){
         //Given
         val expected = Thing("Calcetines", "Estanteria")
         repository.save(expected)
@@ -50,5 +50,26 @@ class MapThingRepositoryTest {
 
         //Then
         assertThat(first, Is.`is`(expected))
+    }
+    
+    @Test
+    fun shouldReturnAllTheThings(){
+        //Given
+        val cajon = "cajon"
+        val socks = Thing("Socks", cajon)
+        val scarf = Thing("Bufanda", cajon)
+        val jeans = Thing("Vaqueros", cajon)
+        repository.save(socks)
+        repository.save(scarf)
+        repository.save(jeans)
+        
+        //When
+        val listThings = repository.getThingList(repository.getFirst())
+        
+        //Assert
+        assertThat(listThings!!.size, Is.`is`(3))
+        assertTrue(listThings.contains(scarf))
+        assertTrue(listThings.contains(socks))
+        assertTrue(listThings.contains(jeans))
     }
 }

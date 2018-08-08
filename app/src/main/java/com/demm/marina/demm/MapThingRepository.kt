@@ -25,4 +25,7 @@ class MapThingRepository : ThingRepository {
         return map.get(firstKey)?.get(0)
     }
 
+    override fun getThingList(thing: Thing?): MutableList<Thing>? {
+        return map.get(thing?.placement)
+    }
 }

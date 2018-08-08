@@ -5,5 +5,6 @@ interface ThingRepository {
     fun isEmpty(): Boolean
     fun contains(thing: Thing): Boolean?
     fun getFirst(): Thing?
+    fun getThingList(thing: Thing?): MutableList<Thing>?
 
 }
