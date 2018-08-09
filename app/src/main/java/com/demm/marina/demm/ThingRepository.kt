@@ -6,5 +6,6 @@ interface ThingRepository {
     fun contains(thing: Thing): Boolean?
     fun getFirst(): Thing?
     fun getThingList(thing: Thing?): MutableList<Thing>?
+    fun getAllPlacement(thingName: String): MutableList<String>
 
 }

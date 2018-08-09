@@ -72,4 +72,26 @@ class MapThingRepositoryTest {
         assertTrue(listThings.contains(socks))
         assertTrue(listThings.contains(jeans))
     }
+
+    @Test
+    fun shouldReturnAllThePlacement(){
+        //Given
+        val thingName = "Book"
+        val book1 = Thing(thingName, "Table")
+        val book2 = Thing(thingName, "Drawer")
+        val book3 = Thing(thingName, "Chair")
+        repository.save(book1)
+        repository.save(book2)
+        repository.save(book3)
+
+        //When
+        val placements = repository.getAllPlacement(thingName)
+
+        //Asert
+        assertThat(placements.size, Is.`is`(3))
+        assertTrue(placements.contains(book1.placement))
+        assertTrue(placements.contains(book2.placement))
+        assertTrue(placements.contains(book3.placement))
+
+    }
 }
