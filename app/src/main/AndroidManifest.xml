@@ -20,6 +20,7 @@
         <activity android:name=".SearchThings" />
         <activity android:name=".AddThings" />
         <activity android:name=".ListThings" />
+        <activity android:name=".ListPlacements" />
     </application>
 
 </manifest>
