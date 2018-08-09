@@ -15,17 +15,17 @@ class AddThings : AppCompatActivity() {
 
         addThing.setOnClickListener {
 
-            if (thingName.text != null && thingPlacement.text != null) {
+            if (!(thingName.text.isNullOrEmpty()) && !(thingPlacement.text.isNullOrEmpty())) {
                 val name = thingName.text.toString()
                 val placement = thingPlacement.text.toString()
                 val thing = Thing(name, placement)
 
                 val thingRepository: ThingRepository = (application as DEMMApplication).repository
                 thingRepository.save(thing)
-            }
 
-            val startListThings = Intent(this, ListThings::class.java)
-            startActivity(startListThings)
+                val startListThings = Intent(this, ListThings::class.java)
+                startActivity(startListThings)
+            }
         }
     }
 }
