@@ -25,6 +25,7 @@ class AddThings : AppCompatActivity() {
 
                 val startListThings = Intent(this, ListThings::class.java)
                 startActivity(startListThings)
+                finish()
             }
         }
     }

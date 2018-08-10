@@ -16,6 +16,7 @@ class ListThings : AppCompatActivity() {
         add.setOnClickListener {
             val starAddThings = Intent(this, AddThings::class.java)
             startActivity(starAddThings)
+            finish()
         }
 
         val thingRepository: ThingRepository = (application as DEMMApplication).repository
