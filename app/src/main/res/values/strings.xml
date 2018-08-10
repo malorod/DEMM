@@ -7,5 +7,5 @@
     <string name="thing_name">Nombre</string>
     <string name="thing_placement">Lugar</string>
     <string name="add_thing">Añadir</string>
-    <string name="textListPlacement">Lugares en los que se encuentra:</string>
+    <string name="textListPlacement">Lugares en los que se encuentra: %s</string>
 </resources>
