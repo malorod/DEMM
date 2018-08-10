@@ -18,7 +18,6 @@ class ListPlacements : AppCompatActivity() {
 
         val thingTextView = findViewById(R.id.thingSearch) as TextView
         thingTextView.text = getString(R.string.textListPlacement, thing)
-        thingTextView.text = getString(R.string.textListPlacement, thing)
 
         val listView : ListView = findViewById(R.id.listPlacement) as ListView
         val listPlacements = thingRepository.getAllPlacement(thing)
