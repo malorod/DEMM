@@ -24,6 +24,12 @@ class AddThings : AppCompatActivity() {
                 thingRepository.save(thing)
 
                 val startListThings = Intent(this, ListThings::class.java)
+
+                val thingBundle = Bundle()
+                thingBundle.putString("name", name)
+                thingBundle.putString("placement", placement)
+                startListThings.putExtras(thingBundle)
+
                 startActivity(startListThings)
                 finish()
             }

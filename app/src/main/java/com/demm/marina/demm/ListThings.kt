@@ -21,17 +21,22 @@ class ListThings : AppCompatActivity() {
 
         val thingRepository: ThingRepository = (application as DEMMApplication).repository
 
-        thingPlacement.text = thingRepository.getFirst()?.placement
+        val bundle = intent.extras
+        val name = bundle.getString("name")
+        val placement = bundle.getString("placement")
+
+        val thing = Thing(name, placement)
+
+        thingPlacement.text = placement
 
         val listView :ListView = findViewById(R.id.thingList) as ListView
 
-        val thingList = thingRepository.getThingList(thingRepository.getFirst())
+        val thingList = thingRepository.getThingList(thing)
 
         val listThings = arrayOfNulls<String>(thingList!!.size)
 
         for (i in 0 until thingList.size){
-            val thing = thingList[i]
-            listThings[i] = thing.name
+            listThings[i] = thingList[i].name
         }
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listThings)
