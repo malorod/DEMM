@@ -14,8 +14,8 @@ class ListThings : AppCompatActivity() {
         setContentView(R.layout.activity_list_things)
 
         add.setOnClickListener {
-            val starAddThings = Intent(this, AddThings::class.java)
-            startActivity(starAddThings)
+            val startAddThings = Intent(this, AddThings::class.java)
+            startActivity(startAddThings)
             finish()
         }
 
