@@ -8,4 +8,7 @@
     <string name="thing_placement">Lugar</string>
     <string name="add_thing">Añadir</string>
     <string name="textListPlacement">Lugares en los que se encuentra: %s</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Borrar</string>
+    <string name="thingName">%s</string>
 </resources>

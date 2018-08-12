@@ -33,14 +33,7 @@ class ListThings : AppCompatActivity() {
 
         val thingList = thingRepository.getThingList(thing)
 
-        val listThings = arrayOfNulls<String>(thingList!!.size)
-
-        for (i in 0 until thingList.size){
-            listThings[i] = thingList[i].name
-        }
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listThings)
-
+        val adapter = ThingAdapter(this, thingList!!)
         listView.adapter = adapter
     }
 }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class ThingAdapter(val context: Context, private val thingsList: MutableList<Thing>): BaseAdapter(){
+class ThingAdapter(private val context: Context, private val thingsList: MutableList<Thing>): BaseAdapter(){
 
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -24,12 +24,11 @@ class ThingAdapter(val context: Context, private val thingsList: MutableList<Thi
         return position.toLong()
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val rowView = inflater.inflate(R.layout.list_item_thing, parent, false)
         val titleTextView = rowView.findViewById(R.id.thingName) as TextView
         val thing = getItem(position) as Thing
         titleTextView.text = thing.name
-
         return rowView
     }
 }
