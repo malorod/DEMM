@@ -1,6 +1,5 @@
 package com.demm.marina.demm
 
-import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 
 
-class ThingAdapter(private val context: Context, private val thingsList: MutableList<Thing>) : BaseAdapter() {
+class ThingAdapter(context: Context, private val thingsList: MutableList<Thing>) : BaseAdapter() {
 
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -34,7 +33,8 @@ class ThingAdapter(private val context: Context, private val thingsList: Mutable
 
         val deleteButton = rowView.findViewById(R.id.deleteButton)
         deleteButton.setOnClickListener {
-            AlertDialog.Builder(context).setMessage(thing.name + " " + position).show()
+            thingsList.removeAt(position)
+            notifyDataSetChanged()
         }
 
         return rowView
