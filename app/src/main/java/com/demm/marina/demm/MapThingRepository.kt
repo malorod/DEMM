@@ -43,4 +43,18 @@ class MapThingRepository : ThingRepository {
 
         return placements
     }
+
+    override fun delete(thing: Thing) {
+        val listThings = map[thing.placement]
+        val thingsToDelete= mutableListOf<Thing>()
+
+        listThings!!.forEach {
+            if (it.name == thing.name)
+                thingsToDelete.add(it)
+        }
+
+        thingsToDelete.forEach {
+            listThings.remove(it)
+        }
+    }
 }

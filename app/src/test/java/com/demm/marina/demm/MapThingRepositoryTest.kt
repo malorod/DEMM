@@ -94,4 +94,28 @@ class MapThingRepositoryTest {
         assertTrue(placements.contains(book3.placement))
 
     }
+
+    @Test
+fun shouldDeleteAThing(){
+        //Given
+        val drawer = "Drawer"
+        val socks = Thing("Socks", drawer)
+        val scarf = Thing("Scarf", drawer)
+        val jeans = Thing("Jeans", drawer)
+        repository.save(socks)
+        repository.save(scarf)
+        repository.save(jeans)
+
+        val scarf2 = Thing("Scarf", "Drawer")
+
+        //When
+        repository.delete(scarf2)
+
+        //Assert
+        assertThat(repository.getThingList(scarf)!!.size, Is.`is`(2))
+        assertFalse(repository.contains(scarf)!!)
+        assertTrue(repository.contains(socks)!!)
+        assertTrue(repository.contains(jeans)!!)
+
+    }
 }
