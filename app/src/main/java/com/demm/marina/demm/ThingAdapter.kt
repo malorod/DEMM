@@ -1,6 +1,8 @@
 package com.demm.marina.demm
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +10,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 
 
-class ThingAdapter(context: Context, private val thingsList: MutableList<Thing>) : BaseAdapter() {
+class ThingAdapter(private val context: Context, private val thingsList: MutableList<Thing>) : BaseAdapter() {
 
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -34,6 +36,20 @@ class ThingAdapter(context: Context, private val thingsList: MutableList<Thing>)
         val deleteButton = rowView.findViewById(R.id.deleteButton)
         deleteButton.setOnClickListener {
             thingsList.removeAt(position)
+            notifyDataSetChanged()
+        }
+
+        val editButton = rowView.findViewById(R.id.editButton)
+        editButton.setOnClickListener {
+            val startEditThing = Intent(context, EditThings::class.java)
+
+            val thingBundle = Bundle()
+            val thing = getItem(position) as Thing
+            thingBundle.putString("name", thing.name)
+            thingBundle.putString("placement", thing.placement)
+            startEditThing.putExtras(thingBundle)
+
+            context.startActivity(startEditThing)
             notifyDataSetChanged()
         }
 
