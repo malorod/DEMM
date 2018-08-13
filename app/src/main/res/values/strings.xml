@@ -11,4 +11,8 @@
     <string name="edit">Editar</string>
     <string name="delete">Borrar</string>
     <string name="thingName">%s</string>
+    <string name="editTextView">Para editar introduce un nuevo valor:</string>
+    <string name="thinNameText">Nuevo valor para: %s</string>
+    <string name="thingPlacementText">Nuevo valor para: %s</string>
+    <string name="editButton">Editar</string>
 </resources>
