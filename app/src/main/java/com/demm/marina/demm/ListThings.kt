@@ -3,7 +3,6 @@ package com.demm.marina.demm
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_list_things.*
 
@@ -24,16 +23,14 @@ class ListThings : AppCompatActivity() {
         val bundle = intent.extras
         val name = bundle.getString("name")
         val placement = bundle.getString("placement")
-
         val thing = Thing(name, placement)
-
-        thingPlacement.text = placement
-
-        val listView :ListView = findViewById(R.id.thingList) as ListView
 
         val thingList = thingRepository.getThingList(thing)
 
+        thingPlacement.text = placement
+
         val adapter = ThingAdapter(this, thingList!!)
-        listView.adapter = adapter
+        val things = findViewById(R.id.thingList) as ListView
+        things.adapter = adapter
     }
 }
