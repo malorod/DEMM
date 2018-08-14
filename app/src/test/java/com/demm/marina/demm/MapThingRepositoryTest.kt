@@ -40,7 +40,7 @@ class MapThingRepositoryTest {
     }
 
     @Test
-    fun shoulReturnTheFirstKey(){
+    fun shoulReturnTheFirstKey() {
         //Given
         val expected = Thing("Calcetines", "Estanteria")
         repository.save(expected)
@@ -51,9 +51,9 @@ class MapThingRepositoryTest {
         //Then
         assertThat(first, Is.`is`(expected))
     }
-    
+
     @Test
-    fun shouldReturnAllTheThings(){
+    fun shouldReturnAllTheThings() {
         //Given
         val cajon = "cajon"
         val socks = Thing("Socks", cajon)
@@ -62,10 +62,10 @@ class MapThingRepositoryTest {
         repository.save(socks)
         repository.save(scarf)
         repository.save(jeans)
-        
+
         //When
         val listThings = repository.getThingList(repository.getFirst())
-        
+
         //Assert
         assertThat(listThings!!.size, Is.`is`(3))
         assertTrue(listThings.contains(scarf))
@@ -74,7 +74,7 @@ class MapThingRepositoryTest {
     }
 
     @Test
-    fun shouldReturnAllThePlacement(){
+    fun shouldReturnAllThePlacement() {
         //Given
         val thingName = "Book"
         val book1 = Thing(thingName, "Table")
@@ -96,7 +96,7 @@ class MapThingRepositoryTest {
     }
 
     @Test
-fun shouldDeleteAThing(){
+    fun shouldDeleteAThing() {
         //Given
         val drawer = "Drawer"
         val socks = Thing("Socks", drawer)
@@ -117,5 +117,22 @@ fun shouldDeleteAThing(){
         assertTrue(repository.contains(socks)!!)
         assertTrue(repository.contains(jeans)!!)
 
+    }
+
+    @Test
+    fun shouldEditTheNameOfThing(){
+        //Given
+        val drawer = "Drawer"
+        val thing = Thing("Sicks", drawer)
+        val newName = "Socks"
+        repository.save(thing)
+
+        //When
+        repository.editName(thing, newName)
+
+        //Assert
+        assertFalse(repository.contains(thing)!!)
+        assertThat(repository.getThingList(thing)!!.size, Is.`is`(1))
+        assertThat((repository.getThingList(thing))!!.get(0).name, Is.`is`("Socks"))
     }
 }

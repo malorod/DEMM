@@ -8,5 +8,6 @@ interface ThingRepository {
     fun getThingList(thing: Thing?): MutableList<Thing>?
     fun getAllPlacement(thingName: String): MutableList<String>
     fun delete(thing: Thing)
+    fun editName(oldThing: Thing, name: String)
 
 }

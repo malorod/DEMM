@@ -57,4 +57,10 @@ class MapThingRepository : ThingRepository {
             listThings.remove(it)
         }
     }
+
+    override fun editName(oldThing: Thing, name: String) {
+        delete(oldThing)
+        save(Thing(name, oldThing.placement))
+
+    }
 }
