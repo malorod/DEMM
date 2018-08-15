@@ -10,16 +10,16 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 
 
-class ThingAdapter(private val context: Context, private val thingsList: MutableList<Thing>) : BaseAdapter() {
+class ThingAdapter(private val context: Context, private val thingRepository: ThingRepository, val thing: Thing) : BaseAdapter() {
 
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
-        return thingsList.size
+        return thingRepository.getThingList(thing)!!.size
     }
 
     override fun getItem(position: Int): Any {
-        return thingsList[position]
+        return thingRepository.getThingList(thing)!![position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -35,7 +35,7 @@ class ThingAdapter(private val context: Context, private val thingsList: Mutable
 
         val deleteButton = rowView.findViewById(R.id.deleteButton)
         deleteButton.setOnClickListener {
-            thingsList.removeAt(position)
+            thingRepository.delete(thing)
             notifyDataSetChanged()
         }
 
