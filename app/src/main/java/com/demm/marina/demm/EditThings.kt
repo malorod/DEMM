@@ -1,5 +1,6 @@
 package com.demm.marina.demm
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
@@ -12,12 +13,10 @@ class EditThings : AppCompatActivity() {
         setContentView(R.layout.activity_edit_things)
 
         val thingBundle = intent.extras
-        val name = thingBundle.getString("name").toString()
-        val placement = thingBundle.getString("placement").toString()
-        val oldThing = Thing(name, placement)
+        val oldThing = thingBundle.getParcelable<Thing>("thing")
 
-        thingNameText.text = getString(R.string.thingNameText, name)
-        thingPlacementText.text = getString(R.string.thingPlacementText, placement)
+        thingNameText.text = getString(R.string.thingNameText, oldThing.name)
+        thingPlacementText.text = getString(R.string.thingPlacementText, oldThing.placement)
 
         editButton.setOnClickListener {
 
@@ -27,8 +26,12 @@ class EditThings : AppCompatActivity() {
                 val thingRepository: ThingRepository = (application as DEMMApplication).repository
                 thingRepository.editName(oldThing, newName)
 
-                finish()
             }
+
+            val startListThings = Intent(this, ListThings::class.java)
+            startListThings.putExtra("thing", oldThing)
+
+            startActivity(startListThings)
         }
     }
 }

@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,23 +20,18 @@
         </activity>
         <activity
             android:name=".SearchThings"
-            android:launchMode="singleInstance"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AddThings"
-            android:launchMode="singleInstance"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".ListThings" />
         <activity
             android:name=".ListThings"
-            android:launchMode="singleInstance"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ListPlacements"
-            android:launchMode="singleInstance"
             android:parentActivityName=".SearchThings" />
         <activity
             android:name=".EditThings"
-            android:launchMode="singleInstance"
-            android:parentActivityName=".ListThings" />
+            android:parentActivityName=".MainActivity" />
     </application>
 </manifest>

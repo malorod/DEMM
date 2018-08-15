@@ -17,14 +17,10 @@ class SearchThings : AppCompatActivity() {
                 val listPlacements = Intent(this, ListPlacements::class.java)
 
                 val thing = Bundle()
-                thing.putString(
-                        "thing",
-                        thingName.text.toString()
-                )
+                thing.putString("thingToSearch", thingName.text.toString())
                 listPlacements.putExtras(thing)
 
                 startActivity(listPlacements)
-                finish()
             }
         }
     }

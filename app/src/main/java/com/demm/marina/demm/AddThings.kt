@@ -18,20 +18,16 @@ class AddThings : AppCompatActivity() {
             if (!(thingName.text.isNullOrEmpty()) && !(thingPlacement.text.isNullOrEmpty())) {
                 val name = thingName.text.toString()
                 val placement = thingPlacement.text.toString()
-                val thing = Thing(name, placement)
+                val thingToAdd = Thing(name, placement)
 
                 val thingRepository: ThingRepository = (application as DEMMApplication).repository
-                thingRepository.save(thing)
+                thingRepository.save(thingToAdd)
 
                 val startListThings = Intent(this, ListThings::class.java)
 
-                val thingBundle = Bundle()
-                thingBundle.putString("name", name)
-                thingBundle.putString("placement", placement)
-                startListThings.putExtras(thingBundle)
+                startListThings.putExtra("thing", thingToAdd)
 
                 startActivity(startListThings)
-                finish()
             }
         }
     }

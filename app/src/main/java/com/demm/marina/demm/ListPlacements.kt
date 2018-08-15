@@ -16,13 +16,13 @@ class ListPlacements : AppCompatActivity() {
 
         val thingRepository: ThingRepository = (application as DEMMApplication).repository
         val bundle = intent.extras
-        val thing = bundle.getString("thing")
+        val thingToSearch = bundle.getString("thingToSearch")
 
         val thingTextView = findViewById(R.id.thingSearch) as TextView
-        thingTextView.text = getString(R.string.textListPlacement, thing)
+        thingTextView.text = getString(R.string.textListPlacement, thingToSearch)
 
         val listView : ListView = findViewById(R.id.listPlacement) as ListView
-        val listPlacements = thingRepository.getAllPlacement(thing)
+        val listPlacements = thingRepository.getAllPlacement(thingToSearch)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listPlacements)
 
@@ -33,14 +33,9 @@ class ListPlacements : AppCompatActivity() {
             val selectedThing = parent.getItemAtPosition(position) as String
             val startListThings = Intent(this, ListThings::class.java)
 
-            val thingBundle = Bundle()
-            thingBundle.putString("name", thing)
-            thingBundle.putString("placement", selectedThing)
-            startListThings.putExtras(thingBundle)
+            startListThings.putExtra("thing", Thing(thingToSearch, selectedThing))
 
             startActivity(startListThings)
-            finish()
-
         }
     }
 }

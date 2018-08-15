@@ -15,21 +15,16 @@ class ListThings : AppCompatActivity() {
         add.setOnClickListener {
             val startAddThings = Intent(this, AddThings::class.java)
             startActivity(startAddThings)
-            finish()
         }
 
         val thingRepository: ThingRepository = (application as DEMMApplication).repository
 
         val bundle = intent.extras
-        val name = bundle.getString("name")
-        val placement = bundle.getString("placement")
-        val thing = Thing(name, placement)
+        val thingInfo = bundle.getParcelable<Thing>("thing")
 
-        val thingList = thingRepository.getThingList(thing)
+        thingPlacement.text = thingInfo.placement
 
-        thingPlacement.text = placement
-
-        val adapter = ThingAdapter(this, thingList!!)
+        val adapter = ThingAdapter(this, thingRepository, thingInfo)
         val things = findViewById(R.id.thingList) as ListView
         things.adapter = adapter
     }

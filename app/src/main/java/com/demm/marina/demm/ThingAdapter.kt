@@ -2,7 +2,6 @@ package com.demm.marina.demm
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,14 +42,9 @@ class ThingAdapter(private val context: Context, private val thingRepository: Th
         editButton.setOnClickListener {
             val startEditThing = Intent(context, EditThings::class.java)
 
-            val thingBundle = Bundle()
-            val thing = getItem(position) as Thing
-            thingBundle.putString("name", thing.name)
-            thingBundle.putString("placement", thing.placement)
-            startEditThing.putExtras(thingBundle)
+            startEditThing.putExtra("thing", getItem(position) as Thing)
 
             context.startActivity(startEditThing)
-            notifyDataSetChanged()
         }
 
         return rowView
