@@ -101,26 +101,28 @@ class MapThingRepositoryTest {
         val drawer = "Drawer"
         val socks = Thing("Socks", drawer)
         val scarf = Thing("Scarf", drawer)
+        val scarf2 = Thing("Scarf", drawer)
         val jeans = Thing("Jeans", drawer)
         repository.save(socks)
         repository.save(scarf)
+        repository.save(scarf2)
         repository.save(jeans)
 
-        val scarf2 = Thing("Scarf", "Drawer")
+        val scarf3 = Thing("Scarf", "Drawer")
 
         //When
         repository.delete(scarf2)
 
         //Assert
-        assertThat(repository.getThingList(scarf)!!.size, Is.`is`(2))
-        assertFalse(repository.contains(scarf)!!)
+        assertThat(repository.getThingList(scarf)!!.size, Is.`is`(3))
+        assertTrue(repository.contains(scarf)!!)
         assertTrue(repository.contains(socks)!!)
         assertTrue(repository.contains(jeans)!!)
 
     }
 
     @Test
-    fun shouldEditTheNameOfThing(){
+    fun shouldEditTheNameOfThing() {
         //Given
         val drawer = "Drawer"
         val thing = Thing("Sicks", drawer)
