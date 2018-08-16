@@ -124,11 +124,11 @@ class MapThingRepositoryTest {
         //Given
         val drawer = "Drawer"
         val thing = Thing("Sicks", drawer)
-        val newName = "Socks"
+        val newThing = Thing("Socks", drawer)
         repository.save(thing)
 
         //When
-        repository.editName(thing, newName)
+        repository.editName(thing, newThing)
 
         //Assert
         assertFalse(repository.contains(thing)!!)

@@ -58,9 +58,9 @@ class MapThingRepository : ThingRepository {
         }
     }
 
-    override fun editName(oldThing: Thing, name: String) {
+    override fun editName(oldThing: Thing, newThing: Thing) {
         delete(oldThing)
-        save(Thing(name, oldThing.placement))
+        save(newThing)
 
     }
 }

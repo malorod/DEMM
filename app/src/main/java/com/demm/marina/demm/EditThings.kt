@@ -3,7 +3,7 @@ package com.demm.marina.demm
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_edit_things.*
 
 class EditThings : AppCompatActivity() {
@@ -15,22 +15,20 @@ class EditThings : AppCompatActivity() {
         val thingBundle = intent.extras
         val oldThing = thingBundle.getParcelable<Thing>("thing")
 
-        thingNameText.text = getString(R.string.thingNameText, oldThing.name)
-        thingPlacementText.text = getString(R.string.thingPlacementText, oldThing.placement)
+        thingName.setText(oldThing.name, TextView.BufferType.EDITABLE)
+        thingPlacement.setText(oldThing.placement, TextView.BufferType.EDITABLE)
 
         editButton.setOnClickListener {
 
-            if (!(thingName.text.isNullOrEmpty())) {
-                val newName = thingName.text.toString()
+            val thingRepository: ThingRepository = (application as DEMMApplication).repository
 
-                val thingRepository: ThingRepository = (application as DEMMApplication).repository
-                thingRepository.editName(oldThing, newName)
+            val newName = thingName.text.toString()
+            val newPlacement = thingPlacement.text.toString()
 
-            }
+            thingRepository.editName(oldThing, Thing(newName, newPlacement))
 
             val startListThings = Intent(this, ListThings::class.java)
             startListThings.putExtra("thing", oldThing)
-
             startActivity(startListThings)
         }
     }
