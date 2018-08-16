@@ -14,11 +14,11 @@ class ThingAdapter(private val context: Context, private val thingRepository: Th
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
-        return thingRepository.getThingList(thing)!!.size
+        return thingRepository.getThingList(thing).size
     }
 
     override fun getItem(position: Int): Any {
-        return thingRepository.getThingList(thing)!![position]
+        return thingRepository.getThingList(thing)[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -42,7 +42,7 @@ class ThingAdapter(private val context: Context, private val thingRepository: Th
         editButton.setOnClickListener {
             val startEditThing = Intent(context, EditThings::class.java)
 
-            startEditThing.putExtra("thing", getItem(position) as Thing)
+            startEditThing.putExtra("thingToUpdate", getItem(position) as Thing)
 
             context.startActivity(startEditThing)
         }

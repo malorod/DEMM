@@ -17,10 +17,12 @@ class MapThingRepositoryTest {
     fun shouldSaveAThing() {
         //Given
         val thing = Thing("Boli", "Cajón")
+
         //When
         repository.save(thing)
+
         //Then
-        assertTrue(repository.contains(thing)!!)
+        assertTrue(repository.contains(thing))
     }
 
     @Test
@@ -35,8 +37,8 @@ class MapThingRepositoryTest {
         repository.save(scarf)
 
         //Then
-        assertThat(repository.contains(socks)!!, Is.`is`(true))
-        assertTrue(repository.contains(scarf)!!)
+        assertThat(repository.contains(socks), Is.`is`(true))
+        assertTrue(repository.contains(scarf))
     }
 
     @Test
@@ -67,7 +69,7 @@ class MapThingRepositoryTest {
         val listThings = repository.getThingList(repository.getFirst())
 
         //Assert
-        assertThat(listThings!!.size, Is.`is`(3))
+        assertThat(listThings.size, Is.`is`(3))
         assertTrue(listThings.contains(scarf))
         assertTrue(listThings.contains(socks))
         assertTrue(listThings.contains(jeans))
@@ -108,16 +110,14 @@ class MapThingRepositoryTest {
         repository.save(scarf2)
         repository.save(jeans)
 
-        val scarf3 = Thing("Scarf", "Drawer")
-
         //When
         repository.delete(scarf2)
 
         //Assert
-        assertThat(repository.getThingList(scarf)!!.size, Is.`is`(3))
-        assertTrue(repository.contains(scarf)!!)
-        assertTrue(repository.contains(socks)!!)
-        assertTrue(repository.contains(jeans)!!)
+        assertThat(repository.getThingList(scarf).size, Is.`is`(3))
+        assertTrue(repository.contains(scarf))
+        assertTrue(repository.contains(socks))
+        assertTrue(repository.contains(jeans))
 
     }
 
@@ -130,11 +130,11 @@ class MapThingRepositoryTest {
         repository.save(thing)
 
         //When
-        repository.editName(thing, newThing)
+        repository.update(thing, newThing)
 
         //Assert
-        assertFalse(repository.contains(thing)!!)
-        assertThat(repository.getThingList(thing)!!.size, Is.`is`(1))
-        assertThat((repository.getThingList(thing))!!.get(0).name, Is.`is`("Socks"))
+        assertFalse(repository.contains(thing))
+        assertThat(repository.getThingList(thing).size, Is.`is`(1))
+        assertThat((repository.getThingList(thing)).get(0).name, Is.`is`("Socks"))
     }
 }

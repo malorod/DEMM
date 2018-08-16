@@ -13,7 +13,7 @@ class EditThings : AppCompatActivity() {
         setContentView(R.layout.activity_edit_things)
 
         val thingBundle = intent.extras
-        val oldThing = thingBundle.getParcelable<Thing>("thing")
+        val oldThing = thingBundle.getParcelable<Thing>("thingToUpdate")
 
         thingName.setText(oldThing.name, TextView.BufferType.EDITABLE)
         thingPlacement.setText(oldThing.placement, TextView.BufferType.EDITABLE)
@@ -25,7 +25,7 @@ class EditThings : AppCompatActivity() {
             val newName = thingName.text.toString()
             val newPlacement = thingPlacement.text.toString()
 
-            thingRepository.editName(oldThing, Thing(newName, newPlacement))
+            thingRepository.update(oldThing, Thing(newName, newPlacement))
 
             val startListThings = Intent(this, ListThings::class.java)
             startListThings.putExtra("thing", oldThing)

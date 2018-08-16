@@ -3,7 +3,7 @@ package com.demm.marina.demm
 import android.os.Parcel
 import android.os.Parcelable
 
-class Thing(var name: String, val placement: String) : Parcelable {
+class Thing(val name: String, val placement: String) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString()) {

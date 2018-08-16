@@ -16,17 +16,17 @@ class MapThingRepository : ThingRepository {
         return map.isEmpty()
     }
 
-    override fun contains(thing: Thing): Boolean? {
-        return map.get(thing.placement)?.contains(thing)
+    override fun contains(thing: Thing): Boolean {
+        return map.get(thing.placement)!!.contains(thing)
     }
 
-    override fun getFirst(): Thing? {
+    override fun getFirst(): Thing {
         val firstKey = map.keys.first()
-        return map.get(firstKey)?.get(0)
+        return map.get(firstKey)!!.get(0)
     }
 
-    override fun getThingList(thing: Thing?): MutableList<Thing>? {
-        return map.get(thing?.placement)
+    override fun getThingList(thing: Thing): MutableList<Thing> {
+        return map.get(thing.placement)!!
     }
 
     override fun getAllPlacement(thingName: String): MutableList<String> {
@@ -40,7 +40,6 @@ class MapThingRepository : ThingRepository {
                     placements.add(it.placement)
             }
         }
-
         return placements
     }
 
@@ -54,9 +53,8 @@ class MapThingRepository : ThingRepository {
         }
     }
 
-    override fun editName(oldThing: Thing, newThing: Thing) {
+    override fun update(oldThing: Thing, newThing: Thing) {
         delete(oldThing)
         save(newThing)
-
     }
 }
