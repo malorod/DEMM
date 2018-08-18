@@ -14,8 +14,9 @@ class MainActivity : AppCompatActivity() {
 
         add.setOnClickListener{
 
-            val starAddThings = Intent (this, AddThings::class.java)
-            startActivity(starAddThings)
+            val startAddThings = Intent (this, AddThings::class.java)
+            startActivity(startAddThings)
+
         }
 
         search.setOnClickListener {
