@@ -76,7 +76,7 @@ class MapThingRepositoryTest {
     }
 
     @Test
-    fun shouldReturnAllThePlacement() {
+    fun shouldReturnAllThePlacementOfOneThing() {
         //Given
         val thingName = "Book"
         val book1 = Thing(thingName, "Table")
@@ -136,5 +136,23 @@ class MapThingRepositoryTest {
         assertFalse(repository.contains(thing))
         assertThat(repository.getThingList(thing).size, Is.`is`(1))
         assertThat((repository.getThingList(thing)).get(0).name, Is.`is`("Socks"))
+    }
+
+    @Test
+    fun shouldReturnAllThePlacements(){
+        //Given
+        val thingName = "Book"
+        val book1 = Thing(thingName, "Table")
+        val book2 = Thing(thingName, "Drawer")
+        val book3 = Thing(thingName, "Chair")
+        repository.save(book1)
+        repository.save(book2)
+        repository.save(book3)
+
+        //When
+        val lugares = repository.getAllPlacements().size
+
+        //Assert
+        assertThat(lugares, Is.`is`(3))
     }
 }

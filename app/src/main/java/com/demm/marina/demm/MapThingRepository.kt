@@ -1,7 +1,8 @@
 package com.demm.marina.demm
 
 class MapThingRepository : ThingRepository {
-    var map = mutableMapOf<String, MutableList<Thing>>()
+
+        var map = mutableMapOf<String, MutableList<Thing>>()
 
     override fun save(thing: Thing) {
         if (this.map.containsKey(thing.placement)) {
@@ -56,5 +57,9 @@ class MapThingRepository : ThingRepository {
     override fun update(oldThing: Thing, newThing: Thing) {
         delete(oldThing)
         save(newThing)
+    }
+
+    override fun getAllPlacements(): MutableSet<String> {
+        return map.keys
     }
 }
