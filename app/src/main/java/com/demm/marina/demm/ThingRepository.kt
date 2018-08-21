@@ -9,5 +9,5 @@ interface ThingRepository {
     fun getAllPlacement(thingName: String): MutableList<String>
     fun delete(thing: Thing)
     fun update(oldThing: Thing, newThing: Thing)
-    fun getAllPlacements(): MutableSet<String>
+    fun getAllPlacements(): MutableList<String>
 }

@@ -59,7 +59,9 @@ class MapThingRepository : ThingRepository {
         save(newThing)
     }
 
-    override fun getAllPlacements(): MutableSet<String> {
-        return map.keys
+    override fun getAllPlacements(): MutableList<String> {
+        val allPlacements = mutableListOf<String>()
+        allPlacements.addAll(map.keys)
+        return allPlacements
     }
 }
