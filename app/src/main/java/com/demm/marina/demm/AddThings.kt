@@ -20,7 +20,7 @@ class AddThings : AppCompatActivity() {
                 val placement = thingPlacement.text.toString()
                 val thingToAdd = Thing(name, placement)
 
-                val thingRepository: ThingRepository = (application as DEMMApplication).repository
+                val thingRepository = RealmThingRepository()
                 thingRepository.save(thingToAdd)
 
                 val startListThings = Intent(this, ListThings::class.java)

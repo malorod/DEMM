@@ -20,7 +20,7 @@ class EditThings : AppCompatActivity() {
 
         editButton.setOnClickListener {
 
-            val thingRepository: ThingRepository = (application as DEMMApplication).repository
+            val thingRepository = RealmThingRepository()
 
             val newName = thingName.text.toString()
             val newPlacement = thingPlacement.text.toString()

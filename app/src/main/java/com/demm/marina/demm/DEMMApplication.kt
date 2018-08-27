@@ -1,8 +1,12 @@
 package com.demm.marina.demm
 
 import android.app.Application
+import io.realm.Realm
 
 class DEMMApplication : Application() {
 
-    val repository: ThingRepository = MapThingRepository()
+    override fun onCreate() {
+        super.onCreate()
+        Realm.init(this)
+    }
 }

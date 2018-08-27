@@ -17,8 +17,7 @@ class ListThings : AppCompatActivity() {
             startActivity(startAddThings)
         }
 
-        val thingRepository: ThingRepository = (application as DEMMApplication).repository
-
+        val thingRepository = RealmThingRepository()
         val bundle = intent.extras
         val thingInfo = bundle.getParcelable<Thing>("thing")
 
