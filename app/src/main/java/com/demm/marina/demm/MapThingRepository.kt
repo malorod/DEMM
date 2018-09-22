@@ -1,6 +1,6 @@
 package com.demm.marina.demm
 
-class MapThingRepository : ThingRepository {
+class MapThingRepository: ThingRepository {
 
         var map = mutableMapOf<String, MutableList<Thing>>()
 
@@ -13,15 +13,15 @@ class MapThingRepository : ThingRepository {
         }
     }
 
-    override fun isEmpty(): Boolean {
+    fun isEmpty(): Boolean {
         return map.isEmpty()
     }
 
-    override fun contains(thing: Thing): Boolean {
+    fun contains(thing: Thing): Boolean {
         return map.get(thing.placement)!!.contains(thing)
     }
 
-    override fun getFirst(): Thing {
+    fun getFirst(): Thing {
         val firstKey = map.keys.first()
         return map.get(firstKey)!!.get(0)
     }
@@ -30,7 +30,7 @@ class MapThingRepository : ThingRepository {
         return map.get(thing.placement)!!
     }
 
-    override fun getAllPlacement(thingName: String): MutableList<String> {
+    override fun getAllPlacements(thingName: String): MutableList<String> {
 
         val keys = map.values
         val placements = mutableListOf<String>()
@@ -59,7 +59,7 @@ class MapThingRepository : ThingRepository {
         save(newThing)
     }
 
-    override fun getAllPlacements(): MutableList<String> {
+    fun getAllPlacements(): MutableList<String> {
         val allPlacements = mutableListOf<String>()
         allPlacements.addAll(map.keys)
         return allPlacements
