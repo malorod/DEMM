@@ -22,7 +22,7 @@ class ListPlacements : AppCompatActivity() {
         thingTextView.text = getString(R.string.textListPlacement, thingToSearch)
 
         val listView: ListView = findViewById(R.id.listPlacement) as ListView
-        val listPlacements = thingRepository.getAllPlacement(thingToSearch)
+        val listPlacements = thingRepository.getAllPlacementsOfOneThing(thingToSearch)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listPlacements)
 

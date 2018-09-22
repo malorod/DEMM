@@ -30,7 +30,7 @@ class MapThingRepository: ThingRepository {
         return map.get(thing.placement)!!
     }
 
-    override fun getAllPlacements(thingName: String): MutableList<String> {
+    override fun getAllPlacementsOfOneThing(thingName: String): MutableList<String> {
 
         val keys = map.values
         val placements = mutableListOf<String>()

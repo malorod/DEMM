@@ -6,7 +6,6 @@ import io.realm.kotlin.where
 
 class RealmThingRepository : ThingRepository {
 
-
     override fun save(thing: Thing) {
 
         val realm = Realm.getDefaultInstance()
@@ -35,7 +34,7 @@ class RealmThingRepository : ThingRepository {
         return thingsList
     }
 
-    override fun getAllPlacement(thingName: String): MutableList<String> {
+    override fun getAllPlacementsOfOneThing(thingName: String): MutableList<String> {
 
         val realm = Realm.getDefaultInstance()
 
