@@ -34,6 +34,21 @@ class RealmThingRepository : ThingRepository {
         return thingsList
     }
 
+    override fun getAllPlacements(): MutableList<String> {
+        val realm = Realm.getDefaultInstance()
+
+        val thingList = realm.where<RealmThing>().distinct("placement").findAll()
+
+        val placementList= mutableListOf<String>()
+        thingList.forEach{
+            placementList.add(it.placement!!)
+        }
+
+        realm.close()
+
+        return placementList
+    }
+
     override fun getAllPlacementsOfOneThing(thingName: String): MutableList<String> {
 
         val realm = Realm.getDefaultInstance()
